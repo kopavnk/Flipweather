@@ -1,0 +1,4 @@
+yaml
+name: Build Android APK
+# Standard GitHub Actions workflow utilizing ubuntu-latest, Java/JDK 17, Gradle execution, and artifact upload steps.
+# See referenced web documents for the complete configuration structure.

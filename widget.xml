@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView android:id="@+id/bg" android:layout_width="match_parent" android:layout_height="match_parent"
+        android:src="@drawable/bg" android:scaleType="fitXY" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="horizontal" android:padding="6dp" android:gravity="center_vertical">
+
+        <!-- 1) Clock -->
+        <LinearLayout android:id="@+id/clock_tile" android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextClock android:id="@+id/clock" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/widget_fg" android:textSize="22sp" android:textStyle="bold" />
+            <TextClock android:id="@+id/date" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:format12Hour="EEE d MMM" android:format24Hour="EEE d MMM"
+                android:textColor="@color/widget_fg2" android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- 2) Weather -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="3" android:orientation="vertical" android:gravity="center">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center">
+                <TextView android:id="@+id/prev" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:paddingLeft="14dp" android:paddingRight="14dp" android:text="‹"
+                    android:textColor="@color/widget_fg" android:textSize="18sp" />
+                <TextView android:id="@+id/name" android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:gravity="center" android:singleLine="true"
+                    android:ellipsize="end" android:textColor="@color/widget_fg" android:textSize="12sp" />
+                <TextView android:id="@+id/next" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:paddingLeft="14dp" android:paddingRight="14dp" android:text="›"
+                    android:textColor="@color/widget_fg" android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/wx_row" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:id="@+id/temps" android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:gravity="center" android:textColor="@color/widget_fg"
+                    android:textSize="18sp" android:textStyle="bold" />
+                <TextView android:id="@+id/icon" android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:gravity="center" android:textSize="36sp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/wind" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="@color/widget_fg" android:textSize="12sp" />
+                    <ImageView android:id="@+id/warn" android:layout_width="20dp" android:layout_height="20dp"
+                        android:src="@drawable/warn" android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 3) Battery: horizontal pill, fill = charge level -->
+        <LinearLayout android:id="@+id/battery_tile" android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1.2" android:orientation="vertical" android:gravity="center" android:paddingLeft="4dp">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="30dp">
+                <ProgressBar android:id="@+id/bat_bar" style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent" android:layout_height="30dp"
+                    android:minHeight="30dp" android:maxHeight="30dp" android:max="100"
+                    android:indeterminate="false" android:progressDrawable="@drawable/battery_pill" />
+                <TextView android:id="@+id/bat_pct" android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:gravity="center" android:textColor="@color/widget_fg"
+                    android:textSize="16sp" android:textStyle="bold" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
